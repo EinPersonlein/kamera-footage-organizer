@@ -1,6 +1,7 @@
 import shutil
 from pathlib import Path
 import tkinter as tk
+from tkinter import messagebox
 
 ### Erstelle Fenster
 fenster = tk.Tk()
@@ -18,9 +19,27 @@ pfadeingabe.pack()
 
 ### Startet, wenn Eingabe durch Knopfdruck bestätigt:
 def durchführen():
-    ### Eingabe zu Path
+
+    ### Eingabe als quellpfad zwischenspeichern
     quellpfad = pfadeingabe.get()
+
+    ### Fehler Abfangen - Wenn Eingabe leer:
+    if not quellpfad:
+        messagebox.showerror("Eingabe Leer." , "Bitte Pfad angeben.")
+        return
+
+    ### Setze quellpfad als Dateipfad für Ursprung der Automatisierung / Sortierung
     quellordner = Path(quellpfad)
+
+    ### Fehler Abfangen - Wenn Pfad kein Ordner:
+    if not quellordner.is_dir() and quellordner.exists():
+        messagebox.showerror("Pfad kein Ordner." , "Bitte Pfad für \neinen Ordner angeben.")
+        return
+
+    ### Fehler Abfangen - Wenn Pfad nicht existiert:
+    if not quellordner.exists():
+        messagebox.showerror("Pfad existiert nicht." , "Bitte Pfad angeben.")
+        return
 
     ### Zum Zählen der Dateien, die verschoben werden
     zahl_kamera_fotos = 0
@@ -69,11 +88,14 @@ def durchführen():
     for ord in zielordner.values():
         if not any(ord.iterdir()):
             ord.rmdir()
-        
-    ### Bestätige Verschiebung
-    bestaetigung = tk.Label(fenster, text=f"{zahl_kamera_fotos} Dateien wurden in den Ordner 'Kamerafotos' verschoben.\n{zahl_bearbeitete_fotos} Dateien wurden in den Ordner 'Bearbeitet' verschoben.\n"
+    
+    ### Wenn Verschiebung stattfindet:
+    if any([zahl_bearbeitete_fotos, zahl_kamera_fotos, zahl_videos, zahl_sonstige]):
+
+        ### Bestätige Verschiebung
+        bestaetigung = tk.Label(fenster, text=f"{zahl_kamera_fotos} Dateien wurden in den Ordner 'Kamerafotos' verschoben.\n{zahl_bearbeitete_fotos} Dateien wurden in den Ordner 'Bearbeitet' verschoben.\n"
                             f"{zahl_videos} Dateien wurden in den Ordner 'Videos' verschoben.\n{zahl_sonstige} Dateien wurden in den Ordner 'Sonstige' verschoben.")
-    bestaetigung.pack()
+        bestaetigung.pack()
 
 ### Knopf für Bestätigung der Eingabe => durchfuehren()
 sortieren = tk.Button(fenster, text="Eingabe bestätigen", command = durchführen)
