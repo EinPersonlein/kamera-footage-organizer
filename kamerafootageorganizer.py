@@ -2,6 +2,7 @@ import shutil
 from pathlib import Path
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import filedialog
 
 ### Erstelle Fenster
 fenster = tk.Tk()
@@ -13,9 +14,20 @@ fenster.geometry("500x500")
 label = tk.Label(fenster, text="Gib bitte den Dateipfad an, auf dem das Footage liegt, das du sortieren möchtest:")
 label.pack()
 
+### Erstelle Fenster für Auswahl des Footage-Ordners ohne manuelle Eingabe
+def pfadauswahl():
+    ordner = filedialog.askdirectory(title="Wähle den Ordner, in dem das Footage liegt")
+    if ordner:
+        pfadeingabe.delete(0, tk.END)
+        pfadeingabe.insert(0, ordner)
+
 ### Nutzer-Eingabe
 pfadeingabe = tk.Entry(fenster, width=80)
 pfadeingabe.pack()
+
+### Knopf für Auswahl vom Footage-Ordner
+auswahl = tk.Button(fenster, text="Footage-Ordner auswählen", command=pfadauswahl)
+auswahl.pack()
 
 ### Startet, wenn Eingabe durch Knopfdruck bestätigt:
 def durchführen():
