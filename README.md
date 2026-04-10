@@ -18,7 +18,7 @@ Pfadeingabe durch Auswahl oder über Eingabe möglich:
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/542a1347-f561-45e9-aa09-a8aeab06f9f3" />
 
 NACHHER:
-Nach Bestätigung der Eingabe, werden die Dateien sortiert und Ordner, die nicht benötigt wurden, entfernt:
+Nach Bestätigung der Eingabe, werden die Dateien sortiert / verschoben und Ordner, die nicht benötigt wurden, entfernt:
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/c03a349a-0bf0-4949-8905-f365a731343d" />
 
