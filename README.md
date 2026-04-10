@@ -9,10 +9,12 @@ Sortiert Dateien aus einem beliebigen Ordner in die dafür vorgesehenen Ordner:
 ## Beispiel
 
 VORHER:
-Viele Fotos, auch bearbeitete und Videos liegen in einem Ordner
+Viele Fotos, auch bearbeitete und Videos liegen in einem Ordner:
+
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/77aba809-25a1-495a-8dad-0e9dc359bd2c" />
 
 Pfadeingabe durch Auswahl oder über Eingabe möglich:
+
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/542a1347-f561-45e9-aa09-a8aeab06f9f3" />
 
 NACHHER:
