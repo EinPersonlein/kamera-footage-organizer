@@ -17,6 +17,7 @@ Pfadeingabe durch Auswahl oder über Eingabe möglich:
 
 NACHHER:
 Nach Bestätigung der Eingabe, werden die Dateien sortiert und Ordner, die nicht benötigt wurden, entfernt:
+
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/c03a349a-0bf0-4949-8905-f365a731343d" />
 
 Falls ein Pfad leer bleibt, falsch angegeben ist oder nicht existiert, erscheint eine entsprechende Fehlermeldung.
